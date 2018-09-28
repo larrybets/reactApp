@@ -1,9 +1,10 @@
 import React from 'react';
 import ComicsScreen from "../screens/Comics/Comics";
-import {DrawerNavigator, StackNavigator} from "react-navigation";
+import { createStackNavigator, createDrawerNavigator} from 'react-navigation';
+
+
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-console.disableYellowBox = true;
 
 const navigationOptions = {
     navigationOptions: {
@@ -25,7 +26,7 @@ const leftIcon = (navigation, icon) => <Icon
      style={{marginLeft: 20}}
      size={20}
      color="white"
-     onPress={() => navigation.navigate('DrawerOpen')}     />; //<-- el onPress no me funciona.
+     onPress={() => navigation.openDrawer()}     />; //<-- el onPress no me funciona.
 
 
                                                                                 
@@ -38,25 +39,29 @@ const rightIcon = (navigation, icon) => <Icon
                                                                                               />;
 
 
-const comicsScreenStack = StackNavigator (
+const comicsScreenStack = createStackNavigator (
     {
         ListComics:{
             screen: ComicsScreen,
             navigationOptions: ({navigation}) => ({
                     title: 'Comics',
-                    drawerIcon: ({tintColor}) => (<Icon name="home" size={24} style={{ color: tintColor}} />), 
                     headerLeft: leftIcon(navigation, 'bars')
             })
-        },
+        }
     },
     navigationOptions
 );
 
 
-export default DrawerNavigator(
+export default createDrawerNavigator(
     {
         ComicsScreen:{
-            screen: comicsScreenStack
+            screen: comicsScreenStack,
+            navigationOptions: ({navigation}) => ({
+                drawerLabel: 'tuputamadre',
+            drawerIcon: ({tintColor}) => (<Icon name="home" size={24} style={{ color: tintColor}} />), 
+            })
+            
         }
     },
     {
@@ -70,4 +75,17 @@ export default DrawerNavigator(
             }
         },
     }
-)
+) 
+
+/**export default createDrawerNavigator (
+        {
+            screen: comicsScreenStack,
+            navigationOptions: ({ navigation }) => ({
+                drawerLabel: 'Prueba',
+                drawerIcon: ({tintColor}) => (<Icon name="home" size={24} style={{ color: tintColor}} />), 
+
+            }) 
+        },
+
+)*/
+

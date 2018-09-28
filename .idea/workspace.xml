@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aebdcb05-406f-4ec1-b549-3e003cf5b3e4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/App.js" afterPath="$PROJECT_DIR$/App.js" />
-      <change beforePath="$PROJECT_DIR$/aplication/navigations/guest.js" afterPath="$PROJECT_DIR$/aplication/navigations/guest.js" />
-      <change beforePath="$PROJECT_DIR$/aplication/screens/Login.js" afterPath="$PROJECT_DIR$/aplication/screens/Login.js" />
-      <change beforePath="$PROJECT_DIR$/aplication/screens/Start.js" afterPath="$PROJECT_DIR$/aplication/screens/Start.js" />
-      <change beforePath="$PROJECT_DIR$/aplication/utils/firebase.js" afterPath="$PROJECT_DIR$/aplication/utils/firebase.js" />
-      <change beforePath="$PROJECT_DIR$/aplication/utils/validation.js" afterPath="$PROJECT_DIR$/aplication/utils/validation.js" />
+      <change beforePath="$PROJECT_DIR$/aplication/navigations/logged.js" afterPath="$PROJECT_DIR$/aplication/navigations/logged.js" />
+      <change beforePath="$PROJECT_DIR$/aplication/screens/Comics/Comics.js" afterPath="$PROJECT_DIR$/aplication/screens/Comics/Comics.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />

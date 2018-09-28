@@ -58,18 +58,18 @@ export default class Comics extends Component {
 	}
 
 	renderComic (comic) {
-		return (
-			<ListItem
-				containerStyle={styles.item}
-				titleStyle={styles.title}
-				roundAvatar
-				title={`${comic.name} (Capacidad: ${comic.capacity})`}
-				avatar={this.state.comic}
-				onPress={() => this.comicDetail(comic)}
-				rightIcon={{ name: 'arrow-right', type: 'font-awesome', style: styles.listIconStyle}}
-			/>
-		)
-	}
+        return (
+            <ListItem
+                containerStyle={styles.item}
+                titleStyle={styles.title}
+                roundAvatar
+                title={`${comic.name} (Capacidad: ${comic.capacity})`}
+                avatar={this.state.comic_logo}
+                onPress={() => this.comicDetail(comic)}
+                rightIcon={{ name: 'arrow-right', type: 'font-awesome', style: styles.listIconStyle}}
+            />
+        )
+    }
 
 	render () {
 
