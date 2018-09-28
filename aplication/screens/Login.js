@@ -1,16 +1,16 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { View } from 'react-native';
 import BackgroundImage from "../components/BackgroundImage";
 import AppButton from "../components/AppButton";
+
+import t from 'tcomb-form-native';
 import FormValidation from '../utils/validation';
 import { Card } from "react-native-elements";
-import t from 'tcomb-form-native';
-import * as fireBase from 'firebase';
-import Toast from 'react-native-simple-toast';
 const Form = t.form.Form;
 
+import * as firebase from 'firebase';
+import Toast from 'react-native-simple-toast';
 
-//import * as fireBase
 
 export default class Login extends Component{
     constructor(){
@@ -18,7 +18,7 @@ export default class Login extends Component{
 
             this.user = t.struct({
                 email: FormValidation.email,
-                password: FormValidation.password
+                password: FormValidation.password,
             });
 
             this.options = {
@@ -35,13 +35,27 @@ export default class Login extends Component{
                         secureTextEntry: true,
                     }
                 }
-            };
-    }
+           };
+        }
 
 
     login (){
-       
-        
+        const validate = this.refs.form.getValue();
+        if(validate){
+            firebase.auth().signInWithEmailAndPassword(validate.email, validate.password)
+                .then(()=>{
+                    Toast.showWithGravity("Bienvenido", Toast.LONG, Toast.BOTTOM);
+                })
+                .catch((error) =>{
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                        if (errorCode === 'auth/wrong-password'){
+                            Toast.showWithGravity('Password incorrecto', Toast.LONG, Toast.BOTTOM);
+                        } else {
+                            Toast.showWithGravity(errorMessage, Toast.LONG, Toast.BOTTOM);
+                        }
+                });
+        }
     }
 
     render () {
@@ -54,7 +68,6 @@ export default class Login extends Component{
                             type= {this.user}
                              options={this.options} 
                         />
-
                         <AppButton
                          bgColor="rgb(111, 38, 74)"
                          title= "Login"
@@ -65,9 +78,7 @@ export default class Login extends Component{
                          />
                     </Card>
                 </View>
-            
             </BackgroundImage>
-        );
+        )
     }
-
 }

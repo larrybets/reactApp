@@ -6,6 +6,8 @@ import { NavigationActions } from 'react-navigation';
 import Toast from 'react-native-simple-toast';
 
 import * as firebase from 'firebase';
+import facebook from '../utils/facebook';
+
 
 export default class Start extends Component{
 
@@ -22,11 +24,29 @@ export default class Start extends Component{
     }
 
     register () {
-
+        const navigateAction = NavigationActions.navigate({
+            routeName: 'Register'
+        });
+        this.props.navigation.dispatch(navigateAction);
     }
 
     async facebook () {
+        const {type, token} = await Expo.Facebook.logInWithReadPermissionsAsync(
+            facebook.config.aplication_id,
+            {permissions: facebook.config.permissions}
+        )
 
+        if(type === "success"){
+            const credentials = firebase.auth.FacebookAuthProvider.credential(token);
+            firebase.auth().signInWithCredential(credentials)
+                .catch(error => {
+                     Toast.showWithGravity('Accediendo a sapiencial...', Toast.LONG, Toast.BOTTOM);
+                })
+        } else if (type === "cancel"){
+             Toast.showWithGravity('Parece ser que hemos usado la gema del tiempo para cancelar!', Toast.LONG, Toast.BOTTOM);
+        } else {
+            Toast.showWithGravity('Ni con el guantelete sabríamos que ha sucedido...:(',  Toast.LONG, Toast.BOTTOM);
+        }
     }
 
     render () {

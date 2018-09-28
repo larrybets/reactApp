@@ -7,4 +7,4 @@ export default fireBaseConfig = {
     storageBucket: "expofirebase-3a134.appspot.com",
     messagingSenderId: "565532958097"
 
-}
+};
