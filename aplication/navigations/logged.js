@@ -1,5 +1,7 @@
 import React from 'react';
 import ComicsScreen from "../screens/Comics/Comics";
+import LogoutScreen from "../screens/Logout";
+
 import { createStackNavigator, createDrawerNavigator} from 'react-navigation';
 
 
@@ -52,16 +54,34 @@ const comicsScreenStack = createStackNavigator (
     navigationOptions
 );
 
+const logoutScreenStack = createStackNavigator({
+    LogoutScreen:{
+            screen: LogoutScreen,
+            navigationOptions: ({navigation}) => ({
+                title: 'cerrar sesión'
+            })
+
+          
+    }
+})
 
 export default createDrawerNavigator(
     {
         ComicsScreen:{
             screen: comicsScreenStack,
             navigationOptions: ({navigation}) => ({
-                drawerLabel: 'tuputamadre',
+                drawerLabel: 'Mis comics',
             drawerIcon: ({tintColor}) => (<Icon name="home" size={24} style={{ color: tintColor}} />), 
             })
             
+        },
+        LogoutScreen:{
+            screen: logoutScreenStack,
+            navigationOptions:({navigation}) =>({
+                drawerLabel:'cerrar sesion',
+                drawerIcon: ({tintColor}) => (<Icon name="sign-out" size={24} style={{ color: tintColor}} />), 
+
+            })
         }
     },
     {

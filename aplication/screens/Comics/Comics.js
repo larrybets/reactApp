@@ -23,7 +23,7 @@ export default class Comics extends Component {
 
 	componentDidMount () {
 		console.log('entra');
-		this.refComics.on('value', snapshot => {  // <----- nunca entra por aqui por lo que nunca cmabiara el loaded a true.
+		this.refComics.on('value', snapshot => { 
 
 			console.log('Demtro'); 
 
@@ -32,9 +32,10 @@ export default class Comics extends Component {
 				comics.push({
 					id: row.key,
 					name: row.val().name,
-					address: row.val().address,
-					capacity: row.val().capacity,
-					description: row.val().description
+					editorial: row.val().editorial,
+					price: row.val().price,
+					description: row.val().description,
+					note: row.val().note
 					
 				})
 			});
@@ -63,7 +64,7 @@ export default class Comics extends Component {
                 containerStyle={styles.item}
                 titleStyle={styles.title}
                 roundAvatar
-                title={`${comic.name} (Capacidad: ${comic.capacity})`}
+                title={`${comic.name} (Precio: ${comic.precio})`}
                 avatar={this.state.comic_logo}
                 onPress={() => this.comicDetail(comic)}
                 rightIcon={{ name: 'arrow-right', type: 'font-awesome', style: styles.listIconStyle}}
@@ -75,7 +76,7 @@ export default class Comics extends Component {
 
 		const {loaded, comics} = this.state;
 		
-		if ( ! loaded) { // Al no cambiarlo a true, siempre se queda en preloader.... si lo cambio a ' loaded ' si entra.
+		if ( ! loaded) { 
 			return <PreLoader/>
 		}
 
