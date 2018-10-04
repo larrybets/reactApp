@@ -8,7 +8,7 @@ firebase.initializeApp(firebaseConfig);
 import GuestNavigation from './aplication/navigations/guest';
 import LoggedNavigation from './aplication/navigations/logged';
 
-console.disableYellowBox = true; // deshabilita los warnings...
+console.disableYellowBox = true; // wrng ot
 
 export default class App extends React.Component {
   constructor(){

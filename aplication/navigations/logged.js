@@ -1,5 +1,6 @@
 import React from 'react';
 import ComicsScreen from "../screens/Comics/Comics";
+import AddComicScreen from "../screens/Comics/AddComic";
 import LogoutScreen from "../screens/Logout";
 
 import { createStackNavigator, createDrawerNavigator} from 'react-navigation';
@@ -48,6 +49,15 @@ const comicsScreenStack = createStackNavigator (
             navigationOptions: ({navigation}) => ({
                     title: 'Comics',
                     headerLeft: leftIcon(navigation, 'bars')
+            })
+        },
+
+        AddComic:{
+            screen: AddComicScreen,
+            navigationOptions: ({navigation}) => ({
+                title: 'Añadir restaurant',
+                headerRight: rightIcon(navigation, 'home'), 
+                headerLeft: leftIcon(navigation, 'bars')      
             })
         }
     },

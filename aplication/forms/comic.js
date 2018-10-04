@@ -7,8 +7,9 @@ export const Comic = t.struct({
     name: t.String,
     editorial: t.String,
     price: t.Number,
-    note: t.Number,
-    description: t.description
+    description: t.String,
+    note: t.Number
+
 
 });
 
@@ -16,15 +17,15 @@ export const options = {
     fields:{
         name:{
             label: 'Nombre (*)',
-            placeHolder: 'Nombre',
+            placeholder: 'Nombre',
         },
         address: {
             label: 'Dirección (*)',
-            placeHolder: 'Dirección'
+            placeholder: 'Dirección'
         },
         note:{
             label: 'Nota',
-            placeHolder:'Nota',
+            placeholder:'Nota',
             config:{
                 step: 1,
                 min: 1,
@@ -35,19 +36,19 @@ export const options = {
         },
         description:{
             label: 'Descripcion (*)',
-            placeHolder: 'Descripción',
+            placeholder: 'Descripción',
             multiline: true,
             stylesheet: {
                 ...Form.stylesheet,
-                textBox:{
-                    ...Form.stylesheet.textBox,
+                textbox:{
+                    ...Form.stylesheet.textbox,
                     normal:{
-                        ...Form.stylesheet.textBox.normal,
-                        height: 150
+                        ...Form.stylesheet.textbox.normal,
+                        height: 100
                     },
                     error: {
-                        ...Form.stylesheet.textBox.error,
-                        height: 150
+                        ...Form.stylesheet.textbox.error,
+                        height: 100
                     }
                 }
 
@@ -55,7 +56,7 @@ export const options = {
         },
         price:{
             label: 'Precio',
-            placeHolder: 'Precio'
+            placeholder: 'Precio'
         }
     }
 };
